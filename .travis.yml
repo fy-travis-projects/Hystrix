@@ -4,6 +4,7 @@ addons:
     packages:
       - lynx
 language: java
+dist: trusty
 jdk:
   - oraclejdk8
 before_install:
@@ -14,5 +15,5 @@ before_install:
   ~/.ssh/id_rsa_travis" >> ~/.ssh/config
 
 install: true
-cript:
+script:
   - ./gradlew --info check
