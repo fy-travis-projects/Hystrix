@@ -26,7 +26,7 @@ find . -name '*.jar' -exec mv {} $HOME/lib \;
 cd $HOME
 mkdir project
 cd $HOME/build/fy-travis-projects/$name
-find . -wholename '*target/*SNAPSHOT.jar' -exec mv {} $HOME/project \;
+find . -name '*SNAPSHOT.jar' -exec mv {} $HOME/project \;
 cd $HOME
 # 7z a -r projects.7z tmp2
 # ls -hl projects.7z
@@ -36,9 +36,8 @@ pwd
 ls -al
 
 # use rsync to deploy to google vm server
-rsync -W -rav -e "ssh -o StrictHostKeyChecking=no -o Compression=no" --info=progress2 build/fy-travis-projects/$name travis@35.236.128.26:/home/travis/projects/$name/
-# rsync -W -rav -e "ssh -o StrictHostKeyChecking=no -o Compression=no" --info=progress2 lib travis@35.236.128.26:/home/travis/projects/$name/
-# rsync -W -rav -e "ssh -o StrictHostKeyChecking=no -o Compression=no" --info=progress2 project travis@35.236.128.26:/home/travis/projects/$name/
+rsync -W -rav -e "ssh -o StrictHostKeyChecking=no -o Compression=no" --info=progress2 lib travis@35.236.128.26:/home/travis/projects/$name/
+rsync -W -rav -e "ssh -o StrictHostKeyChecking=no -o Compression=no" --info=progress2 project travis@35.236.128.26:/home/travis/projects/$name/
 
 
 
